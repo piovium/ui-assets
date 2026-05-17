@@ -1,0 +1,1 @@
+for file in *.png; do magick "$file" "${file%.png}.webp" && rm "$file"; done
