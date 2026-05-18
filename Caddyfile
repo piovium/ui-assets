@@ -1,0 +1,10 @@
+:80 {
+  root * /srv
+  @images {
+    path *.png *.webp *.jpg *.jpeg *.svg *.gif *.ico
+  }
+  handle @images {
+    file_server
+  }
+  respond "Not Found" 404
+}
