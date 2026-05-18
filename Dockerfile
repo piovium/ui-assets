@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-RUN apk add --no-cache imagemagick
+RUN apk add --no-cache imagemagick webp
 WORKDIR /assets
 COPY . .
 RUN for file in *.png; do convert "$file" "${file%.png}.webp" && rm "$file"; done
