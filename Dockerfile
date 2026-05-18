@@ -1,5 +1,5 @@
-FROM alpine:latest AS builder
-RUN apk add --no-cache imagemagick webp
+FROM ubuntu:latest AS builder
+RUN apt-get update && apt-get install -y imagemagick && rm -rf /var/lib/apt/lists/*
 WORKDIR /assets
 COPY . .
 RUN for file in *.png; do convert "$file" "${file%.png}.webp" && rm "$file"; done
