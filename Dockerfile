@@ -1,5 +1,5 @@
-FROM ubuntu:latest AS builder
-RUN apt-get update && apt-get install -y imagemagick && rm -rf /var/lib/apt/lists/*
+FROM alpine:latest AS builder
+RUN apk add --no-cache imagemagick imagemagick-webp
 WORKDIR /assets
 COPY . .
 RUN for file in *.png; do convert "$file" "${file%.png}.webp" && rm "$file"; done
@@ -7,4 +7,3 @@ RUN for file in *.png; do convert "$file" "${file%.png}.webp" && rm "$file"; don
 FROM caddy:alpine
 COPY --from=builder /assets /srv
 COPY Caddyfile /etc/caddy/Caddyfile
-EXPOSE 80

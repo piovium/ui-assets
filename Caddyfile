@@ -1,10 +1,7 @@
-:80 {
+:8080 {
   root * /srv
-  @images {
-    path *.png *.webp *.jpg *.jpeg *.svg *.gif *.ico
-  }
+  @images path *.png *.webp
   handle @images {
     file_server
   }
-  respond "Not Found" 404
 }
