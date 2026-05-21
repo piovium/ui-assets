@@ -1,0 +1,7 @@
+:8080 {
+  root * /srv
+  @images path *.png *.webp
+  handle @images {
+    file_server
+  }
+}
